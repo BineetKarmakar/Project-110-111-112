@@ -1,5 +1,5 @@
 
-prediction1=""
+prediction=""
 
 Webcam.set({
 width:350,
@@ -21,8 +21,8 @@ function modelLoaded(){
 }
 function speak(){
     var synth= window.speechSynthesis;
-    speak_data_1 = "The first prediction is"+ prediction1;
-    var utterThis = new SpeechSynthesisUtterance(speak_data_1);
+    speak_data = "The prediction is"+ prediction;
+    var utterThis = new SpeechSynthesisUtterance(speak_data);
     synth.speak(utterThis);  
 }
 function check(){
@@ -35,7 +35,7 @@ function gotResult(error,results){
     }else{
         console.log(results)
         document.getElementById("result_emotion_name").innerHTML=results[0].label;
-        prediction1=results[0].label;
+        prediction=results[0].label;
         speak()
         if(results[0].label=="Like"){
             document.getElementById("update_emoji").innerHTML="&#128077"
